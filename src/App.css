@@ -1,6 +1,5 @@
-/* App.css */
+/* Existing styles... */
 
-/* Existing CSS */
 .progress-gradient {
   background: linear-gradient(to right, #90ef89, #d692dd, #726edd);
 }
@@ -26,14 +25,14 @@
   height: 6px;
   background-color: white;
   border-radius: 50%;
-  position: absolute; 
+  position: absolute;
   top: 10px;
   right: 10px;
   animation: blink 1s infinite;
 }
 
 .circle-outer {
-  background: linear-gradient(to bottom, #575def, #202731);
+  background: linear-gradient(to bottom, #ff7901, #cf6000);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,10 +40,11 @@
   height: 90vw;
   max-width: 360px;
   max-height: 360px;
+  position: relative;
 }
 
 .circle-inner {
-  background: radial-gradient(circle, #4960b2, #282e3e);
+  background: radial-gradient(circle, #009a49,#009a49,#ffffff, #ffffff);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,7 +85,7 @@
     opacity: 1;
   }
   50% {
-    transform: translateY(-50v);
+    transform: translateY(-50vh);
     opacity: 0.5;
   }
   100% {
@@ -94,11 +94,59 @@
   }
 }
 
-.fixed.inset-0.bg-black.bg-opacity-75.flex.justify-center.items-end.z-50.transition-transform.duration-500.ease-out {
-  transform: translateY(0);
+/* New Styles */
+.reward-reset {
+  animation: shake 0.5s;
+  background-color: #ff5c5c; /* Light red to indicate an error or reset */
 }
 
-/* New CSS for the earn menu */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
+.error-message {
+  background-color: #ff5c5c;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px;
+}
+
+.reward-day.active {
+  border: 2px solid #34c759;
+  box-shadow: 0 0 10px #34c759;
+}
+
+.collect-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .daily-reward-modal {
+    width: 100%;
+    height: auto;
+  }
+
+  .reward-day {
+    width: 45%;
+  }
+}
+
+/* CSS for the earn menu */
 .earn-menu {
   background-color: #000;
   border-top: 3px solid #898585c1; /* Light grey border */
@@ -183,4 +231,394 @@
 .large-coin img {
   width: 150px; /* Adjust as needed */
   height: 150px; /* Adjust as needed */
+}
+
+/* Daily Reward Styles */
+.daily-reward-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.75); /* Ensure transparency with dark overlay */
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+.daily-reward-content {
+  background-color: #272a2f;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 90%;
+  width: 400px;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.reward-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.reward-description {
+  font-size: 0.9em;
+  margin-bottom: 20px;
+}
+
+.reward-calendar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.reward-day {
+  width: 30%;
+  padding: 15px;
+  background-color: #1e252e;
+  border-radius: 10px;
+  margin: 5px 0;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.reward-day.active {
+  border: 2px solid #34c759;
+}
+
+.reward-day.collected {
+  background-color: #505050;
+}
+
+.reward-day-icon {
+  width: 25px;
+  height: 25px;
+  margin: 0 auto 10px;
+}
+
+.collect-button {
+  background-color: #5e72e4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.collect-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.reward-icon {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 10px; /* Align to center and add margin */
+  display: block; /* Ensure it's a block-level element for centering */
+}
+
+.placeholder-icon {
+  width: 25px;
+  height: 25px;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #888;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.time-left {
+  font-size: 0.7em;
+  color: #f0f0f0;
+  margin-top: 5px;
+}
+
+/* Level Up Styles */
+.level-up-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+}
+
+.level-up-content {
+  position: relative; /* Position relative to align the close button */
+  background: linear-gradient(135deg, #FFEE58 0%, #FF7043 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+  width: 80%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  font-family: 'Georgia', serif;  /* Apply the serif font to the entire content */
+  font-size: 2.4ch;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.level-up-image {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 10px; /* Center the image and add margin below */
+  display: block; /* Ensure the image is treated as a block element */
+  background: linear-gradient(135deg, #FFEE58, #FF7043); /* Gradient around the image */
+  padding: 10px; /* Space between image and gradient */
+  border-radius: 50%; /* Make the gradient a circle around the image */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Existing styles... */
+
+/* Position energy and boost containers closer to screen edges */
+.energy-container {
+  position: absolute;
+  bottom: 200px;
+  left: 10px; /* Moved closer to the left edge */
+  display: flex;
+  align-items: center;
+}
+
+.boost-container {
+  position: absolute;
+  bottom: 203px;
+  right: 10px; /* Moved closer to the right edge */
+  display: flex;
+  align-items: center;
+}
+
+
+/* Existing styles... */
+
+/* Lucky Spin Modal Styles */
+.fixed.inset-0 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 50;
+}
+
+.modal-container {
+  position: relative;
+  background-color: #1d2025;
+  padding: 16px;
+  border-radius: 8px;
+  max-width: 80%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  margin: 0 auto; /* Center the modal */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+}
+
+/* Style for the close button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  z-index: 10; /* Ensure it stays on top */
+}
+
+/* Example to style child elements within the modal */
+.modal-content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.absolute.top-4.right-4 {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+
+.w-8.h-8 {
+  width: 32px;
+  height: 32px;
+}
+
+/* Ensure modal fits the screen */
+.modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+h2.text-2xl.text-white.mb-4 {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+p.text-lg.text-gray-400.mb-4 {
+  font-size: 1.125rem;
+  color: #a0aec0;
+  margin-bottom: 1rem;
+}
+
+
+.modal-container {
+  background: radial-gradient(circle, #1f282f,#31415a,#503838, #000000);
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  height: 950px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Modal background to cover 75% of the screen */
+.popup-overlay {
+  position: fixed;
+  top: 12.5%;
+  left: 12.5%;
+  width: 75%;
+  height: 75%;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal content */
+.popup-content {
+  background-color: #1d2025;
+  border-radius: 20px; /* Rounded corners for the modal */
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Close button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+/* Slots frame wrapper with rounded corners */
+.slots-frame-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 350px;
+  background: url('./icons/slotsframe5.png') no-repeat center center;
+  background-size: contain;
+
+}
+
+/* Individual slot images */
+.slot-image {
+  width: 100px;
+  height: 100px;
+}
+
+.slot-1 {
+  position: absolute;
+  left: 14px;
+  align-self: center;
+}
+
+.slot-2 {
+  position: absolute;
+  left: 117px;
+  align-self: center;
+}
+
+.slot-3 {
+  position: absolute;
+  right: 15px;
+  align-self: center;
+}
+
+/* Spin button */
+.spin-button {
+  background-color: #5e72e4;
+  color: white;
+  padding: 10px 40px;
+  border-radius: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.spin-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
